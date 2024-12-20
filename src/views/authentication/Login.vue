@@ -1,7 +1,7 @@
 <template>
-   <div class="grid grid-cols-1 gap-2 text-white">
+   <div class="grid grid-cols-1 p-4 gap-2 text-white">
       <div class="flex items-center justify-center">
-         <IconLogo class="md:w-40 md:h-40 md:border rounded-lg" />
+         <IconLogo class="md:w-40 md:h-40 border rounded-lg" />
       </div>
       <div class="text-center mb-5">
          <h2 class="text-2xl font-bold antialiased tracking-wider">
