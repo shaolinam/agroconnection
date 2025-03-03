@@ -1,160 +1,177 @@
 .titulo {
-  @apply text-gray-800 text-2xl font-bold capitalize antialiased tracking-wide;
+   @apply text-gray-800 text-2xl font-bold capitalize antialiased tracking-wide;
 }
 
 .subTitulo {
-  @apply text-gray-500 text-base font-semibold antialiased tracking-wide;
+   @apply text-gray-500 text-base font-semibold antialiased tracking-wide;
 }
 
 label {
-  @apply uppercase w-full tracking-wide text-white text-xs font-bold;
+   @apply uppercase w-full tracking-wide text-slate-800 text-xs font-bold;
 }
 
 button {
-  @apply min-w-[6rem] px-3 py-2;
+   @apply min-w-[6rem] px-3 py-2;
 }
 
 .btn-padrao {
-  @apply min-w-[6rem] px-3 py-2 text-center rounded-full bg-white text-backend;
+   @apply min-w-[6rem] px-3 py-2 text-center text-white rounded-lg bg-backend;
 }
 
 .msg-campo-invalido {
-  @apply mt-1 text-sm text-white;
+   @apply mt-1 text-sm text-red-500;
 }
 
 .titulo-page {
-  @apply text-2xl font-bold antialiased tracking-wider text-white;
+   @apply text-2xl font-bold antialiased tracking-wider text-slate-800;
 }
 
 input[type="text"] {
-  @apply appearance-none 
+   @apply appearance-none
 w-full px-4 py-3 h-12
 border
-text-gray-700 text-sm 
-rounded-full;
+text-gray-700 text-sm
+rounded-lg
+bg-fundoBase;
 }
 
 input[type="text"]:focus {
-  @apply font-semibold;
+   @apply font-bold outline-none;
+}
+
+input[type="password"] {
+   @apply appearance-none
+w-full px-4 py-3 h-12
+border
+text-gray-700 text-sm
+rounded-lg
+bg-fundoBase;
+}
+
+input[type="password"]:focus {
+   @apply font-bold outline-none;
 }
 
 input[type="number"] {
-  @apply appearance-none 
+   @apply appearance-none
 w-full px-4 py-3 h-12
-border 
-text-gray-700 text-sm 
-rounded-full;
+border
+text-gray-700 text-sm
+rounded-lg
+bg-fundoBase;
 }
 
 input[type="number"]:focus {
-  @apply border-base1 ring-base1 font-semibold;
+   @apply border-base1 ring-base1 font-semibold;
 }
 
 input[type="date"] {
-  @apply appearance-none 
+   @apply appearance-none
 w-full px-4 py-[1.4rem] h-10
-border 
-text-gray-700 text-sm 
-rounded-full;
+border
+text-gray-700 text-sm
+rounded-lg
+bg-fundoBase;
 }
 
 input[type="date"]:focus {
-  @apply border-base1 ring-base1 font-semibold;
+   @apply border-base1 ring-base1 font-semibold;
 }
 
 select {
-  @apply appearance-none 
+   @apply appearance-none
 w-full px-4 py-1 h-10
-border 
-text-gray-700 text-sm 
-rounded-full;
+border
+text-gray-700 text-sm
+rounded-lg
+bg-fundoBase;
 }
 
 select:focus {
-  @apply border-base1 ring-base1 font-semibold;
+   @apply border-base1 ring-base1 font-semibold;
 }
 
 input .dark {
-  @apply text-gray-400
+   @apply text-gray-400
   bg-gray-800 border-gray-700;
 }
 
 input[type="radio"] {
-  @apply shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none;
+   @apply shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none;
 }
 
 input[type="radio"]:focus {
-  @apply ring-base1 font-semibold;
+   @apply ring-base1 font-semibold;
 }
 
 .btn-limpar {
-  @apply w-20 p-2 bg-white  text-slate-800 rounded flex items-center justify-center;
+   @apply w-20 p-2 bg-white  text-slate-800 rounded flex items-center justify-center;
 }
 
 .btn-limpar:hover {
-  @apply bg-yellow-100;
+   @apply bg-yellow-100;
 }
 
 .btn-buscar {
-  @apply w-20 p-2 bg-base2  text-white rounded flex items-center justify-center;
+   @apply w-20 p-2 bg-base2  text-white rounded flex items-center justify-center;
 }
 
 .btn-buscar:hover {
-  @apply bg-base1;
+   @apply bg-base1;
 }
 
 .btn-salvar {
-  @apply w-full md:w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border border-transparent font-semibold bg-white text-gray-700  transition-all text-sm;
+   @apply w-full md:w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-lg border border-transparent font-semibold bg-backend text-white  transition-all text-sm;
 }
 
 .btn-salvar:hover {
-  @apply text-white bg-base1;
+   @apply font-bold bg-base1;
 }
-.btn-salvar:focus {
-  @apply outline-none ring-2 ring-base1 ring-offset-2;
-}
+/* .btn-salvar:focus {
+   @apply outline-none ring-2 ring-base1 ring-offset-2;
+} */
 
 .btn-excluir {
-  @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border border-transparent font-semibold bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm;
+   @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border border-transparent font-semibold bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm;
 }
 
 .btn-cancelar {
-  @apply w-full md:w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border border-transparent font-semibold bg-white text-gray-700 shadow-sm align-middle transition-all text-sm;
+   @apply w-full md:w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-lg border border-backend  font-semibold bg-white text-gray-700 shadow-sm align-middle transition-all text-sm;
 }
 
 .btn-cancelar:hover {
-  @apply text-white bg-base1;
+   @apply text-backend font-bold bg-fundoBase;
 }
 
-.btn-cancelar:focus {
-  @apply outline-none ring-2 ring-base1 ring-offset-2;
-}
+/* .btn-cancelar:focus {
+   @apply outline-none ring-2 ring-base1 ring-offset-2;
+} */
 
 .btn-disabled {
-  @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-gray-200 text-gray-700 shadow-sm align-middle  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm;
+   @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-gray-200 text-gray-700 shadow-sm align-middle  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm;
 }
 
 .btn-voltar {
-  @apply py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm;
+   @apply py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm;
 }
 
 .btn-editar {
-  @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:text-white hover:bg-base1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-base1 transition-all text-sm;
+   @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:text-white hover:bg-base1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-base1 transition-all text-sm;
 }
 
 .btn-deletar {
-  @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-red-500 transition-all text-sm;
+   @apply w-20 py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-red-500 transition-all text-sm;
 }
 
 .exibirDados {
-  @apply w-full h-7 p-1 bg-blue-100 rounded font-semibold truncate uppercase;
+   @apply w-full h-7 p-1 bg-blue-100 rounded font-semibold truncate uppercase;
 }
 
 .menuItem {
-  @apply p-1.5 inline-flex space-x-2 text-gray-500 transition-colors duration-200 rounded-lg;
+   @apply p-1.5 inline-flex space-x-2 text-gray-500 transition-colors duration-200 rounded-lg;
 }
 .menuItem:hover {
-  @apply font-bold bg-gray-600 text-gray-800;
+   @apply font-bold bg-gray-600 text-gray-800;
 }
 /* .menuItem:focus {
   @apply outline-nones;
