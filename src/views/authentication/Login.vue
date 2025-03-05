@@ -246,13 +246,15 @@ const onClickedEntrar = async () => {
       storeGeral.setShowNotification(true);
       router.push({ name: "home" });
    } catch (error: any) {
-      console.log("ERROR: ", error.response);
+      // console.log("ERROR: ", error.response.data);
       notificationParams.sucesso = false;
       notificationParams.espera = 0; // milisegundos - dividir por 1000 = segundos
       notificationParams.titulo = "LOGIN";
-      if (error && error.data && error.data.message)
-         notificationParams.subTitulo = error.response.data.message;
-      else notificationParams.subTitulo = error;
+      if (error && error.response.data && error.response.data.message) {
+         if (error.response.data.statusCode == 401)
+            notificationParams.subTitulo = "Login não autorizado";
+         else notificationParams.subTitulo = error.response.data.message;
+      } else notificationParams.subTitulo = error;
       await storeGeral.setNotificationParams(notificationParams); // setando os valores
       storeGeral.setShowNotification(true); // comando pra executar a exibicao do modal
    }
