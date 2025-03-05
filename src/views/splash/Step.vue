@@ -26,7 +26,7 @@ const iniciar = () => {
 </script>
 
 <template>
-   <div class="w-full min-h-screen corpo py-5">
+   <div class="max-w-[375px] mx-auto min-h-screen corpo py-5">
       <div class="w-full h-auto">
          <StepCard />
       </div>

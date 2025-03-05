@@ -20,6 +20,14 @@ export interface IResponseLogin {
    // token: string;
 }
 
+export interface IProfile {
+   message: string;
+   user: {
+      userId: string;
+      username: string;
+   };
+}
+
 export default class User {
    id: String;
    constructor(

@@ -103,7 +103,7 @@ export const userStore = defineStore("userStore", () => {
 
    const setToken = (token: string): Promise<void> => {
       return new Promise((resolve) => {
-         localStorage.setItem("appToken", JSON.stringify(token));
+         localStorage.setItem("appToken", token);
          resolve();
       });
    };
@@ -118,20 +118,51 @@ export const userStore = defineStore("userStore", () => {
       state.input.confirmPassword.dirty = true;
    };
 
-   const resetData = () => {
+   const resetProfile = () => {
       state.data.id = "";
       state.data.name = "";
       state.data.email = "";
    };
 
-   const setData = (data: { id: string; name: string; email: string }) => {
-      state.data.id = data.id;
-      state.data.name = data.name;
-      state.data.email = data.email;
+   const setProfile = (data: {
+      id: string;
+      name: string;
+      email: string;
+   }): Promise<void> => {
+      return new Promise((resolve) => {
+         localStorage.setItem("appProfile", JSON.stringify(data));
+         state.data.id = data.id;
+         state.data.name = data.name;
+         state.data.email = data.email;
+         resolve();
+      });
+   };
+
+   const getProfile = (): Promise<{
+      id: string;
+      name: string;
+      email: string;
+   }> => {
+      return new Promise((resolve) => {
+         if (state.data.id) {
+            resolve(state.data);
+         }
+         if (!localStorage.getItem("appProfile")) {
+            resolve(state.data);
+         }
+         const profile = localStorage.getItem("appProfile");
+         if (profile) {
+            const parseProfile = JSON.parse(profile);
+            state.data.id = parseProfile.id;
+            state.data.name = parseProfile.name;
+            state.data.email = parseProfile.email;
+         }
+         resolve(state.data);
+      });
    };
 
    const logout: Promise<void> = new Promise((resolve) => {
-      resetData();
+      resetProfile();
       localStorage.removeItem("appLogin");
       resolve();
    });
@@ -153,10 +184,6 @@ export const userStore = defineStore("userStore", () => {
       return false;
    };
 
-   const getData = () => {
-      return state.data;
-   };
-
    // RETURN
 
    return {
@@ -164,9 +191,9 @@ export const userStore = defineStore("userStore", () => {
       getInput,
       dirtyAll,
       isValidAllFields,
-      resetData,
-      setData,
-      getData,
+      resetProfile,
+      setProfile,
+      getProfile,
       setToken,
       logout,
    };

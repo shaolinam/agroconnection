@@ -226,12 +226,16 @@ const onClickedEntrar = async () => {
 
       await storeUser.setToken(res.access_token);
 
-      const userRes = await userGateway.profile();
+      const userRes = await userGateway.getProfile();
 
-      console.log("profile: ", userRes.data);
+      // console.log("profile: ", userRes);
 
-      // storeUser.resetData();
-      // storeUser.setData(res.user);
+      storeUser.resetProfile();
+      storeUser.setProfile({
+         id: userRes.user.userId,
+         name: userRes.user.username,
+         email: "",
+      });
 
       notificationParams.sucesso = true;
       notificationParams.espera = 2000;

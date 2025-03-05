@@ -1,6 +1,6 @@
 import { UserGateway } from "./UserGateway";
 import HttpClient from "../infra/HttpClient";
-import { IUser } from "../domain/entities/User";
+import { IProfile, IUser } from "../domain/entities/User";
 
 export default class UserHttpGateway implements UserGateway {
    constructor(
@@ -24,8 +24,9 @@ export default class UserHttpGateway implements UserGateway {
       let retorno = await this.httpClient.get(`/users`);
       return retorno;
    }
-   async getProfile(): Promise<any> {
+   async getProfile(): Promise<IProfile> {
       let retorno = await this.httpClient.get(`/users/profile`);
+
       return retorno;
    }
    async findByCpf(cpf: string): Promise<any> {
@@ -44,7 +45,6 @@ export default class UserHttpGateway implements UserGateway {
             username: input.cpf,
             password: input.password,
          });
-      console.log("login retorno: ", retorno);
       return retorno;
    }
 }

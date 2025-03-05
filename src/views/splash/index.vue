@@ -19,7 +19,9 @@ onMounted(async () => {
 </script>
 
 <template>
-   <div class="w-full min-h-screen flex items-center justify-center">
+   <div
+      class="max-w-[375px] mx-auto min-h-screen flex items-center justify-center"
+   >
       <div class="w-full h-full flex items-center justify-center">
          <img src="../../assets/img/Logo.svg" alt="" />
       </div>

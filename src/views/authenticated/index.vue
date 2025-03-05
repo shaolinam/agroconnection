@@ -1,5 +1,8 @@
 <template>
-   <div class="max-w-[375px] mx-auto min-h-screen py-5 corpo items-center">
+   <!-- <div class="max-w-[375px] mx-auto min-h-screen py-5 corpo items-center"> -->
+   <div
+      class="min-w-sm md:max-w-screen-md max-w-[375px] mx-auto min-h-screen py-5 corpo items-center"
+   >
       <RouterView></RouterView>
    </div>
 </template>

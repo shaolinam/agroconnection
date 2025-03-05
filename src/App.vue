@@ -9,7 +9,8 @@ const isShowNotification = computed(() => storeGeral.getShowNotification());
 </script>
 
 <template>
-   <div class="min-h-screen relative mx-auto max-w-[375px]">
+   <!-- <div class="min-h-screen relative mx-auto max-w-[375px]"> -->
+   <div class="min-h-screen relative mx-auto w-full max-w-6xl">
       <RouterView></RouterView>
       <div id="modalGeral"></div>
       <div id="modalLoading"></div>
