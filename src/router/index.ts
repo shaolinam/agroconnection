@@ -2,6 +2,22 @@ import { RouteRecordRaw, createRouter, createWebHashHistory } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
    {
+      path: "/",
+      redirect: "splash",
+   },
+   {
+      path: "/splash",
+      name: "splash",
+      component: () =>
+         import(/* webpackChunkName: "splash" */ "../views/splash/index.vue"),
+   },
+   {
+      path: "/step",
+      name: "step",
+      component: () =>
+         import(/* webpackChunkName: "step" */ "../views/splash/Step.vue"),
+   },
+   {
       path: "/authenticated",
       name: "authenticated",
       component: () =>
@@ -18,23 +34,6 @@ const routes: Array<RouteRecordRaw> = [
                ),
          },
       ],
-   },
-
-   {
-      path: "/",
-      redirect: "splash",
-   },
-   {
-      path: "/splash",
-      name: "splah",
-      component: () =>
-         import(/* webpackChunkName: "splash" */ "../views/splash/index.vue"),
-   },
-   {
-      path: "/step",
-      name: "step",
-      component: () =>
-         import(/* webpackChunkName: "step" */ "../views/splash/Step.vue"),
    },
    {
       path: "/authentication",

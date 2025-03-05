@@ -3,8 +3,8 @@
    <div
       class="w-full h-12 px-2 py-5 border flex flex-row items-center overflow-x-auto rounded-lg"
    >
-      <div class="flex flex-row" v-for="item in tops" :key="item">
-         <div class="mr-2">
+      <div class="flex flex-row items-center" v-for="item in tops" :key="item">
+         <div class="w-20 mr-2 truncate ...">
             <!-- <a
                href="#"
                class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"

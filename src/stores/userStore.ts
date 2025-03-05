@@ -163,7 +163,8 @@ export const userStore = defineStore("userStore", () => {
 
    const logout: Promise<void> = new Promise((resolve) => {
       resetProfile();
-      localStorage.removeItem("appLogin");
+      localStorage.removeItem("appToken");
+      localStorage.removeItem("appProfile");
       resolve();
    });
 

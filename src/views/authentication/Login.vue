@@ -148,8 +148,9 @@ const storeGeral = geralStore();
 import Tools from "../../tools/Tools";
 
 import { userStore } from "../../stores/userStore";
-import { IResponseLogin } from "../../domain/entities/User";
 const storeUser = userStore();
+
+import { IResponseLogin } from "../../domain/entities/User";
 
 const tools = new Tools();
 
@@ -257,5 +258,3 @@ const onClickedEntrar = async () => {
    }
 };
 </script>
-
-<style scoped></style>
