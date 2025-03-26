@@ -1,5 +1,5 @@
 <template>
-   <div class="w-full">
+   <div class="w-full border">
       <div class="w-full p-2 grid grid-cols-2 items-center md:shadow-lg">
          <div class="flex items-center space-x-2">
             <div class="relative">

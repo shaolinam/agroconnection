@@ -34,6 +34,11 @@ export default class UserHttpGateway implements UserGateway {
       return retorno;
    }
    async login(input: { cpf: string; password: string }): Promise<any> {
+      const users = [
+         { username: "fazendeiro_joao", password: "senha123" },
+         { username: "maria_rural", password: "rural2023" },
+         { username: "agro_pedro", password: "agropecuaria" },
+      ];
       let retorno;
       if (this.baseUrl) {
          retorno = await this.httpClient.post(
@@ -41,9 +46,13 @@ export default class UserHttpGateway implements UserGateway {
             input,
          );
       } else
+         // retorno = await this.httpClient.post(`/auth/login`, {
+         //    username: input.cpf,
+         //    password: input.password,
+         // });
          retorno = await this.httpClient.post(`/auth/login`, {
-            username: input.cpf,
-            password: input.password,
+            username: users[0].username,
+            password: users[0].password,
          });
       return retorno;
    }

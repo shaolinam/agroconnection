@@ -135,7 +135,7 @@
 
 <script setup lang="ts">
 import IconVoltar from "../../components/icons/IconVoltar.vue";
-import { computed, inject, reactive, ref } from "vue";
+import { computed, ComputedRef, inject, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -163,7 +163,7 @@ const notificationParams = reactive({
    espera: 0,
 });
 
-const isValidCpf = computed(() => {
+const isValidCpf: ComputedRef<string> = computed(() => {
    if (!dados.cpf.dirty) return "";
    if (!dados.cpf.value) return "Campo obrigatório";
    if (dados.cpf.value.length < 14)
@@ -174,7 +174,7 @@ const isValidCpf = computed(() => {
    return "";
 });
 
-const isValidPassword = computed(() => {
+const isValidPassword: ComputedRef<string> = computed(() => {
    if (!dados.password.dirty) return "";
    if (!dados.password.value) return "Campo obrigatório";
    if (dados.password.value.length < 8)

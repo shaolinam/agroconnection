@@ -1,15 +1,40 @@
 <script setup lang="ts">
 import IconFavorito from "./icons/IconFavorito.vue";
 import IconAdicionar from "./icons/IconAdicionar.vue";
+import { PropType } from "vue";
+import { IProduct } from "../domain/entities/Product";
+const props = defineProps({
+   product: {
+      type: Object as PropType<IProduct>,
+   },
+});
+
+const formatPreco = (preco: number | undefined) => {
+   if (preco == 0) return "R$ 0,00";
+   if (preco == undefined) return "R$ -,--";
+   return preco?.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+   });
+};
 </script>
 
 <template>
-   <div class="w-full grid grid-cols-12 bg-white border rounded-lg">
-      <div class="col-span-4 bg-fundoBase"></div>
-      <div class="col-span-8 flex flex-col p-2 space-y-2">
+   <div
+      class="w-full grid grid-flow-col grid-cols-12 bg-white border rounded-lg shadow-lg"
+   >
+      <div class="col-span-4 row-span-2 h-44 bg-fundoBase">
+         <img
+            class="w-full h-full object-cover rounded-l-lg"
+            :src="props.product?.images[0]"
+         />
+      </div>
+      <div
+         class="col-span-8 row-span-2 flex flex-col p-2 space-y-2 rounded-r-lg"
+      >
          <div class="w-full flex flex-row justify-between">
             <div class="flex-grow-0">
-               <label class="truncate ...">Produto de teste</label>
+               <label class="truncate ...">{{ props.product?.name }}</label>
             </div>
             <div class="flex-shrink">
                <div
@@ -19,12 +44,9 @@ import IconAdicionar from "./icons/IconAdicionar.vue";
                </div>
             </div>
          </div>
-         <div class="w-full h-16 truncate">
+         <div class="w-full h-20">
             <p class="text-sm text-slate-500">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               Explicabo fugiat exercitationem nam perferendis voluptatibus?
-               Dolorum porro aliquid perferendis accusantium voluptatem magnam
-               sunt illo, velit odio nam. Esse ad reiciendis obcaecati.
+               {{ props.product?.description }}
             </p>
          </div>
          <div class="w-full flex flex-row justify-between">
@@ -32,7 +54,7 @@ import IconAdicionar from "./icons/IconAdicionar.vue";
                <p
                   class="text-slate-800 text-sm font-semibold antialiased tracking-wide"
                >
-                  R$ 2,99
+                  {{ formatPreco(props.product?.price) }}
                </p>
             </div>
             <div
