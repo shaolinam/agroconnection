@@ -5,12 +5,12 @@
 import CmpSearch from "../../components/layout/CmpSearch.vue";
 import CmpTopFilters from "../../components/layout/CmpTopFilters.vue";
 import ListProduct from "./product/ListProduct.vue";
+import MobileLayout from "../../components/layout/MobileLayout.vue";
 </script>
 
 <template>
-  <div class="w-full h-full corpo">
-    <!-- <CmpHeader class="header" /> -->
-    <div class="corpo_busca my-3 space-y-3 pb-16">
+  <MobileLayout title="AgroConnection">
+    <div class="space-y-4 mt-2">
       <CmpSearch />
       <CmpTopFilters />
       <div class="w-full">
@@ -20,8 +20,7 @@ import ListProduct from "./product/ListProduct.vue";
         <ListProduct />
       </div>
     </div>
-    <!-- <CmpBottom /> -->
-  </div>
+  </MobileLayout>
 </template>
 
 <style scoped>

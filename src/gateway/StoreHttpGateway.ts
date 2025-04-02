@@ -12,16 +12,13 @@ export default class StoreHttpGateway implements StoreGateway {
 
   async create(store: Omit<IStore, "_id">): Promise<IStore> {
     const response = await this.httpClient.post("/stores", store);
-    return response.data;
+    return response;
   }
 
   async uploadImage(formData: FormData): Promise<{ data: { link: string } }> {
     const response = await this.httpClient.post("/stores/upload", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      "Content-Type": "multipart/form-data",
     });
-
     return response;
   }
 }

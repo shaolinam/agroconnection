@@ -49,6 +49,14 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "stores" */ "../views/authenticated/store/StoresPage.vue"
           ),
       },
+      {
+        path: "stores/create",
+        name: "createStore",
+        component: () =>
+          import(
+            /* webpackChunkName: "createStore" */ "../views/authenticated/store/CreateStorePage.vue"
+          ),
+      },
     ],
   },
   {

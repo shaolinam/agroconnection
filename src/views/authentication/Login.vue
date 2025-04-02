@@ -5,11 +5,7 @@
       <div class="w-full max-w-md">
         <!-- Logo e Título -->
         <div class="text-center mb-8">
-          <img
-            src="../../assets/logo.png"
-            alt="Logo"
-            class="h-16 mx-auto mb-4"
-          />
+          <IconLogo class="h-16 mx-auto mb-4 text-backend" />
           <h1 class="text-3xl font-bold text-gray-900">Seja bem-vindo!</h1>
           <p class="mt-2 text-gray-600">Entre com suas credenciais</p>
         </div>
@@ -193,6 +189,7 @@ import { geralStore } from "../../stores/geralStore";
 import { userStore } from "../../stores/userStore";
 import { IResponseLogin } from "../../domain/entities/User";
 import Tools from "../../tools/Tools";
+import IconLogo from "../../components/icons/IconLogo.vue";
 
 const router = useRouter();
 const userGateway = inject("userGateway") as UserGateway;

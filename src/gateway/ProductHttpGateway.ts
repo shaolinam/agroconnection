@@ -7,10 +7,13 @@ export default class ProductHttpGateway implements ProductGateway {
 
   async getAll(
     page: number = 1,
-    limit: number = 10
-  ): Promise<IResponseProduct[]> {
-    let retorno = await this.httpClient.get(
-      `/products/public/search?page=${page}&limit=${limit}`
+    limit: number = 10,
+    search?: string
+  ): Promise<IResponseProduct> {
+    const retorno = await this.httpClient.get(
+      `/products/public/search?page=${page}&limit=${limit}${
+        search ? `&search=${search}` : ""
+      }`
     );
     return retorno;
   }
