@@ -1,6 +1,6 @@
 export default interface HttpClient {
-  get(url: string): Promise<any>;
-  post(url: string, body: any): Promise<any>;
-  put(url: string, body: any): Promise<any>;
-  delete(url: string): Promise<any>;
+  get(url: string, headers?: Record<string, string>): Promise<any>;
+  post(url: string, body: any, headers?: Record<string, string>): Promise<any>;
+  put(url: string, body: any, headers?: Record<string, string>): Promise<any>;
+  delete(url: string, headers?: Record<string, string>): Promise<any>;
 }

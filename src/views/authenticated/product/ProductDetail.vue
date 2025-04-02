@@ -1,83 +1,75 @@
 <template>
-  <div class="w-full h-full corpo">
-    <CmpHeader class="header" />
-    <div class="corpo_detail my-3 space-y-3">
-      <div class="flex items-center">
-        <div @click="goBack" class="cursor-pointer p-2">
-          <IconVoltar />
-        </div>
-        <h1 class="text-xl font-semibold">Detalhes do Produto</h1>
+  <div class="flex flex-col">
+    <div class="container mx-auto p-4">
+      <!-- Header com botão voltar -->
+      <div class="flex items-center mb-6">
+        <button @click="navigateToHome" class="mr-4">
+          <IconArrowLeft class="w-6 h-6" />
+        </button>
+        <h1 class="text-2xl font-bold">Detalhes do Produto</h1>
       </div>
 
-      <div v-if="loading" class="w-full flex justify-center items-center py-10">
-        <p>Carregando...</p>
-      </div>
-
-      <div v-else-if="error" class="w-full p-2 bg-yellow-200">
-        <p
-          class="w-full text-sm text-slate-800 antialiased font-semibold tracking-wide rounded-lg"
-        >
-          Erro ao carregar produto
-        </p>
-      </div>
-
-      <div v-else-if="product" class="w-full flex flex-col space-y-4">
-        <!-- Imagem do Produto -->
-        <div class="w-full h-64 bg-fundoBase rounded-lg overflow-hidden">
+      <!-- Conteúdo do Produto -->
+      <div v-if="product" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Imagens do Produto -->
+        <div class="space-y-4">
           <img
             :src="product.images[0]"
-            class="w-full h-full object-cover"
-            alt="Imagem do produto"
+            :alt="product.name"
+            class="w-full h-96 object-cover rounded-lg"
           />
+          <div class="grid grid-cols-4 gap-2">
+            <img
+              v-for="(image, index) in product.images.slice(1)"
+              :key="index"
+              :src="image"
+              :alt="`${product.name} - Imagem ${index + 2}`"
+              class="w-full h-24 object-cover rounded-lg cursor-pointer hover:opacity-75"
+            />
+          </div>
         </div>
 
         <!-- Informações do Produto -->
-        <div
-          class="w-full flex flex-col space-y-2 p-2 bg-white rounded-lg shadow"
-        >
-          <div class="flex justify-between items-center">
-            <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-            <div
-              class="w-8 h-8 flex items-center justify-center border rounded-full cursor-pointer"
-            >
-              <IconFavorito />
-            </div>
-          </div>
-
-          <p class="text-2xl font-bold text-slate-800">
-            {{ formatPreco(product.price) }}
+        <div class="space-y-4">
+          <h2 class="text-3xl font-bold">{{ product.name }}</h2>
+          <p class="text-gray-600">{{ product.description }}</p>
+          <p class="text-2xl font-bold text-green-600">
+            R$ {{ product.price }}
           </p>
 
-          <div class="py-2">
-            <h3 class="text-lg font-medium mb-1">Descrição</h3>
-            <p class="text-sm text-slate-600">{{ product.description }}</p>
+          <!-- Informações da Loja -->
+          <div class="border-t pt-4">
+            <h3 class="text-xl font-semibold mb-2">Loja</h3>
+            <p class="text-gray-600">{{ product.storeId.name }}</p>
           </div>
 
-          <div class="py-2" v-if="product.category">
-            <h3 class="text-lg font-medium mb-1">Categoria</h3>
-            <p class="text-sm text-slate-600">{{ product.category }}</p>
+          <!-- Localização -->
+          <div class="border-t pt-4">
+            <h3 class="text-xl font-semibold mb-2">Localização</h3>
+            <p class="text-gray-600">{{ product.city }}, {{ product.state }}</p>
           </div>
 
-          <div class="py-2" v-if="product.brand">
-            <h3 class="text-lg font-medium mb-1">Marca</h3>
-            <p class="text-sm text-slate-600">{{ product.brand }}</p>
+          <!-- Categorias -->
+          <div class="border-t pt-4">
+            <h3 class="text-xl font-semibold mb-2">Categorias</h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="category in product.categories"
+                :key="category"
+                class="bg-gray-100 px-3 py-1 rounded-full text-sm"
+              >
+                {{ category }}
+              </span>
+            </div>
           </div>
-
-          <!-- Botão Adicionar ao Carrinho -->
-
-          <a
-            :href="`https://wa.me/5548988098989?text=Olá, tenho interesse no produto: ${product.name}`"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full bg-green-600 text-white py-3 rounded-lg flex items-center justify-center space-x-2 mt-4"
-          >
-            <IconWhatsApp />
-            <span>Entre em contato com o vendedor</span>
-          </a>
         </div>
       </div>
+
+      <!-- Loading State -->
+      <div v-else class="text-center py-8">
+        <p class="text-gray-600">Carregando...</p>
+      </div>
     </div>
-    <CmpBottom />
   </div>
 </template>
 
@@ -92,6 +84,7 @@ import { ProductGateway } from "../../../gateway/ProductGateway";
 import { IProduct } from "../../../domain/entities/Product";
 import IconCaixaMensagens from "../../../components/icons/IconCaixaMensagens.vue";
 import IconWhatsApp from "../../../components/icons/IconWhatsApp.vue";
+import IconArrowLeft from "../../../components/icons/IconArrowLeft.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -113,6 +106,10 @@ const formatPreco = (preco: number | undefined) => {
     style: "currency",
     currency: "BRL",
   });
+};
+
+const navigateToHome = () => {
+  router.push({ name: "home" });
 };
 
 onMounted(async () => {

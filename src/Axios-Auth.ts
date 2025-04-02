@@ -5,6 +5,7 @@ import type {
   AxiosInstance,
   AxiosError,
 } from "axios";
+import { userStore } from "./stores/userStore";
 
 const url = import.meta.env.VITE_BASE_URL_API;
 
@@ -36,7 +37,7 @@ HTTP.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 
 HTTP.interceptors.response.use(
   (config) => config,
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
     if (error.response && error.response.status === 403) {
       console.log("adm/showModalError", "Acesso não permitido!");
     }
@@ -56,7 +57,9 @@ HTTP.interceptors.response.use(
     }
     if (error.response && error.response.status === 401) {
       // Usuario nao logado
-      console.log("adm/logout");
+      const storeUser = userStore();
+      await storeUser.logout();
+      window.location.href = "/authentication/login";
     }
     if (!error.response) {
       console.log("adm/showModalError", "Falha de conexão! Tente novamente.");

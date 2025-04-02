@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import CmpProduto from "../../components/CmpProduto.vue";
-import CmpBottom from "../../components/layout/CmpBottom.vue";
-import CmpHeader from "../../components/layout/CmpHeader.vue";
+// import CmpBottom from "../../components/layout/CmpBottom.vue";
+// import CmpHeader from "../../components/layout/CmpHeader.vue";
 import CmpSearch from "../../components/layout/CmpSearch.vue";
 import CmpTopFilters from "../../components/layout/CmpTopFilters.vue";
 import ListProduct from "./product/ListProduct.vue";
@@ -9,7 +9,7 @@ import ListProduct from "./product/ListProduct.vue";
 
 <template>
   <div class="w-full h-full corpo">
-    <CmpHeader class="header" />
+    <!-- <CmpHeader class="header" /> -->
     <div class="corpo_busca my-3 space-y-3 pb-16">
       <CmpSearch />
       <CmpTopFilters />
@@ -20,7 +20,7 @@ import ListProduct from "./product/ListProduct.vue";
         <ListProduct />
       </div>
     </div>
-    <CmpBottom />
+    <!-- <CmpBottom /> -->
   </div>
 </template>
 

@@ -21,11 +21,15 @@ const httpClient = new AxiosAdapter(AxiosAuth);
 
 import UserHttpGateway from "./gateway/UserHttpGateway";
 import ProductHttpGateway from "./gateway/ProductHttpGateway";
+import StoreHttpGateway from "./gateway/StoreHttpGateway";
 
 const userGateway = new UserHttpGateway(httpClient);
 app.provide("userGateway", userGateway);
 
 const productGateway = new ProductHttpGateway(httpClient);
 app.provide("productGateway", productGateway);
+
+const storeGateway = new StoreHttpGateway(httpClient);
+app.provide("storeGateway", storeGateway);
 
 app.mount("#app");
