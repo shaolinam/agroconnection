@@ -31,49 +31,65 @@ const navigateToProductDetail = () => {
 
 <template>
   <div
-    class="w-full grid grid-flow-col grid-cols-12 bg-white border rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-200"
+    class="group relative w-full bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
     @click="navigateToProductDetail"
   >
-    <div class="col-span-4 row-span-2 h-44 bg-fundoBase">
+    <!-- Imagem do Produto -->
+    <div class="relative h-48 overflow-hidden">
       <img
-        class="w-full h-full object-cover rounded-l-lg"
+        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
         :src="props.product?.images[0]"
+        :alt="props.product?.name"
       />
-    </div>
-    <div class="col-span-8 row-span-2 flex flex-col p-2 space-y-2 rounded-r-lg">
-      <div class="w-full flex flex-row justify-between">
-        <div class="flex-grow-0">
-          <label class="truncate ...">{{ props.product?.name }}</label>
-        </div>
-        <div class="flex-shrink">
-          <div
-            class="w-8 h-8 flex items-center justify-center border rounded-full cursor-pointer"
-            @click.stop="() => {}"
-          >
-            <IconFavorito />
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-20">
-        <p class="text-sm text-slate-500">
-          {{ props.product?.description }}
-        </p>
-      </div>
-      <div class="w-full flex flex-row justify-between">
-        <div>
-          <p
-            class="text-slate-800 text-sm font-semibold antialiased tracking-wide"
-          >
-            {{ formatPreco(props.product?.price) }}
-          </p>
-        </div>
-        <div
-          class="w-8 h-8 flex items-center justify-center border rounded-full cursor-pointer"
+      <!-- Overlay com botões de ação -->
+      <div class="absolute top-2 right-2 flex gap-2">
+        <button
+          class="w-10 h-10 flex items-center justify-center bg-white/90 rounded-full shadow-md hover:bg-white transition-colors duration-200"
           @click.stop="() => {}"
         >
-          <IconAdicionar />
-        </div>
+          <IconFavorito class="w-5 h-5 text-gray-700" />
+        </button>
+        <button
+          class="w-10 h-10 flex items-center justify-center bg-white/90 rounded-full shadow-md hover:bg-white transition-colors duration-200"
+          @click.stop="() => {}"
+        >
+          <IconAdicionar class="w-5 h-5 text-gray-700" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Informações do Produto -->
+    <div class="p-4">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">
+        {{ props.product?.name }}
+      </h3>
+      <p class="text-sm text-gray-600 mb-3 line-clamp-2">
+        {{ props.product?.description }}
+      </p>
+      <div class="flex items-center justify-between">
+        <span class="text-xl font-bold text-primary">
+          {{ formatPreco(props.product?.price) }}
+        </span>
+        <span class="text-sm text-gray-500">
+          {{ props.product?.storeId?.name }}
+        </span>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
